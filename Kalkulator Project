@@ -1,0 +1,397 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+#include <conio.h>
+
+//Global Variabel 
+int input = 0;
+bool menubool = false, kalkulatorbasicbool = false, kalkulatortrigonometribool= false,kalkulatorluasbangundatarbool=false;
+bool finishedbool= false, sqrtbool = false;
+
+
+
+//function list
+void animasi();
+void menu();
+void clear();
+void kalkulatorbasic();
+void klakulatortrigonometri();
+void kalkulatorluas();
+void fakeloading();
+void keluar();
+void closing();
+
+void animasi(){
+	char salam[] = "\t\t\t KALKULATOR";
+	printf("\n\n\n");
+	for(int x = 0;salam[x]!= '\0';x++){
+		printf("%c",salam[x]);
+		for(double y=0;y<=9999999;y++){
+		}
+	}
+	getchar();
+}
+
+
+void clear() {
+	for (int i = 0; i < 60; i++) {
+		puts("");
+	}
+}
+
+void keluar(){
+	clear();
+	if(input <= 0){
+		char input;
+		puts("Anda belum memilih kalkulator yang anda gunakan!");
+		puts("Apakah anda ingin keluar dari kalkulator? (Y/N)");
+		scanf("%c",&input);
+		getchar();
+		if(input == 'Y'||input == 'y'){
+			closing();
+		}else if(input == 'N'|| input == 'n'){
+			clear();
+			menubool = true;
+		}else{
+			puts("Input tidak diketahui,kembali ke main menu!");
+			menubool = true;
+		}
+	}else{
+		closing();
+	}
+}
+
+
+void closing(){
+	clear();
+	puts("Terima kasih telah menggunakan Kalkulator ini");
+	puts("Sampai jumpa lagi!!");
+	menubool = false;
+}
+
+
+void fakeloading() {
+	puts("Processing...");
+	for (int i = 0; i < 2e9; i++) {
+		;
+	}
+}
+
+void kalkulatorbasic(){
+	int input;
+    float a,b,hasil;
+    float c,d, hasilbagi;
+    kalkulatorbasicbool = true;
+    clear();
+    while (kalkulatorbasicbool){
+    puts("Kalkulator apa yang ingin anda gunakan?");
+    puts("1. Kalkulator Pertambahan");
+    puts("2. Kalkulator Pengurangan");
+    puts("3. Kalkulator Perkalian");
+    puts("4. Kalkulator Pembagian");
+    puts("0. Kembali ke menu");
+    printf("Masukan Kode kamu: ");
+    scanf("%d", &input);
+    getchar();
+    clear();
+    switch (input){
+    	case 0 :
+    	kalkulatorbasicbool = false;
+    	break;
+    	
+        case 1 :
+        puts("Masukan angka Pertama :");
+        scanf("%f",&a);
+        puts("Masukan angka Kedua :");
+        scanf("%f",&b);
+        hasil =  a + b;
+        printf("Hasil: %.2f \n", hasil);
+        break;
+        case 2 :
+        puts("Masukan angka Pertama:");
+        scanf("%f", &a);
+        puts("Masukan angka Kedua :");
+        scanf("%f",&b);
+        hasil = a-b;
+        printf("Hasil: %.2f \n", hasil);
+        break;
+
+        case 3:
+        puts("Masukan angka pertama :");
+        scanf("%f", &a);
+        puts("Masuka angka kedua :");
+        scanf("%f",&b);
+        hasil = a*b;
+        printf("Hasil:%.2f \n",hasil);
+        break;
+        
+        case 4:
+        puts("Masukan angka pertama :");
+        scanf("%f", &c);
+        puts("Masukan angka kedua :");
+        scanf("%f",&d);
+        hasilbagi = c/d ;
+        printf("Hasil: %.2f \n",hasilbagi);
+		break;
+		default :
+            puts("Kode yang anda masukan tidak dikenali!");
+            fakeloading();
+            clear();
+            continue;
+        }
+    fakeloading();
+    clear();
+    }
+    menu();
+}
+
+
+void kalkulatortrigonometri(){
+	float a,hasil;
+	int input;
+	float phi =3.14;
+	kalkulatortrigonometribool=true ;
+	clear();
+    while (kalkulatortrigonometribool){
+    	puts("Kalkulator Trigonometri apa yang akan anda gunakan?");
+    	puts("1. Kalkulator Sin");
+    	puts("2. Kalkulator Cos");
+    	puts("3. Kalkulator Tan");
+    	puts("0. Kembali ke menu");
+    	printf("Masukan kode kamu:");
+    	scanf("%d",&input);
+    	getchar();
+    	clear();
+    	switch(input){
+		
+    	case 0:
+    		kalkulatortrigonometribool= false;
+    		break;
+    	case 1:
+    		puts("Masukan angka dari Sin");
+    		scanf("%f",&a);
+       		hasil=sin (a*phi/180);
+       		printf("Hasil: %.2f \n",hasil);
+       		break;
+       	case 2:
+       		puts("Masukan angka dari Cos");
+       		scanf("%f",&a);
+       		hasil=cos(a*phi/180);
+       		printf("Hasil: %.2f \n",hasil);
+       		break;
+       	case 3: 
+       		puts("Masukan angka dari Tan");
+       		scanf("%f",&a);
+       		hasil=tan(a*phi/180);
+       		printf("Hasil : %.2f \n",hasil);
+       		break;
+       	default :
+            puts("Kode yang anda masukan tidak dikenali!");
+            fakeloading();
+            clear();
+            continue;
+    	}	
+	fakeloading();
+	clear();
+}
+menu();
+}
+
+void kalkulatorluasbangundatar(){
+	int input;
+	float a,t,p,l,b,c,d1,d2,r;
+	float hasilluas;
+	float phi= 3.14;
+	kalkulatorluasbangundatarbool= true;
+	clear();
+	while(kalkulatorluasbangundatarbool){
+		puts("Kalkulator apa yang ingin anda gunakan?");
+		puts("1. Kalkulator Luas Segitiga");
+		puts("2. Kalkulator Luas Persegi");
+		puts("3. Kalkulator Luas Persegi Panjang");
+		puts("4. Kalkulator Luas Jajargenjang");
+		puts("5. Kalkulator Luas Trapesium");
+		puts("6. Kalkulator Luas Belah Ketupat");
+		puts("7. Kalkulator Luas Layang-Layang");
+		puts("8. Kalkulator Luas Lingkaran");
+		puts("0. Kembali ke menu");
+		printf("Masukan Kode anda:");
+		scanf("%d",&input);
+		getchar();
+		clear();
+		switch(input){
+			case 0:
+				kalkulatorluasbangundatarbool = false;
+				break;
+			case 1:
+				puts("Masukan angka dari alas segitiga");
+				scanf("%f",&a);
+				puts("Masukan angka dari tinggi segitiga");
+				scanf("%f",&t);
+				hasilluas = a*t/2;
+				printf("Luas Segitiga = %.2f \n",hasilluas);
+				break;
+			case 2:
+				puts("Masukan sisi dari persegi");
+				scanf("%f",&a);
+				hasilluas = a*a;
+				printf("Luas Persegi = %.2f \n",hasilluas);
+				break;
+			case 3:
+				puts("Masukan panjang dari persegi panjang");
+				scanf("%f",&p);
+				puts("Masukan lebar dari persegi panjang");
+				scanf("%f",&l);
+				hasilluas = p*l;
+				printf("Luas Persegi Panjang = %.2f \n",hasilluas);
+				break;
+			case 4:
+				puts("Masukan angka dari alas dari jajargenjang");
+				scanf("%f",&a);
+				puts("Masukan angka dari tinggi dari jajargenjang");
+				scanf("%f",&t);
+				hasilluas = a*t;
+				printf("Luas Jajargenjang = %.2f \n",hasilluas);
+				break;
+			case 5:
+				puts("Masukan angka dari sisi yang sejajar pada trapesium");
+				scanf("%f %f",&a,&b);
+				puts("Masukan angka dari tinggi trapesium");
+				scanf("%f",&t);
+				hasilluas = (a+b)*t/2;
+				printf("Luas Trapesium = %.2f \n",hasilluas);
+				break;
+			case 6 :
+				puts("Masukan angka diagonal pertama dari belah ketupat");
+				scanf("%f",&d1);
+				puts("Masukan angka diagonal kedua dari belah ketupat");
+				scanf("%f",&d2);
+				hasilluas = d1*d2/2;
+				printf("Luas Belah Ketupat = %.2f \n",hasilluas);
+				break;
+			case 7:
+				puts("Masukan angka diagonal pertama dari layang-layang");
+				scanf("%f",&d1);
+				puts("Masukan angka diagonal kedua dari layang-layang");
+				scanf("%f",&d2);
+				hasilluas = d1*d2/2;
+				printf("Luas Layang-Layang = %.2f \n",hasilluas);
+				break;
+			case 8:
+				puts("Masukan angka dari jari-jari lingkaran");
+				scanf("%f",&r);
+				hasilluas = phi*(r*r);
+				printf("Luas Lingkaran = %.2f \n",hasilluas);
+				break;
+			default:
+			puts("Kode yang anda masukan tidak dikenali!");
+			fakeloading();
+			clear();
+            continue;	
+		}
+		fakeloading();
+		clear();
+	}
+	menu();
+}
+
+
+void sqrt(){
+	float s,x;
+	int input;
+	sqrtbool = true;
+	while(sqrtbool){
+		clear();
+		puts("Kalkulator akar pangkat berapa yang akan anda gunakan?");
+		puts("1. Kalkulator akar pangkat 2");
+		puts("2. Kalkulator pangkat 2");
+		puts("3. Kalkulator pangkat 3");
+		puts("0. Kembali ke menu");
+		printf("Masukan kode anda :");
+		scanf("%d",&input);
+		getchar();
+		clear();
+		switch (input){
+			case 0:
+				sqrtbool = false;
+				break;
+			case 1 :
+				puts("Angka berapa yang akan anda akarkan?");
+				scanf("%f",&x);
+				s = sqrt(x);
+				printf("Hasil dari akar pangkat dua dari %.2f = %.2f\n",x,s);
+				break;
+			case 2:
+				puts("Angka berapa yang akan anda pangkatkan?");
+				scanf("%f",&x);
+				s = x*x;
+				printf("hasil = %.2f\n",s);
+				break;
+			case 3 :
+				puts("Angka berapa yang akan anda pangkatkan?");
+				scanf("%f",&x);
+				s = x*x*x;
+				printf("hasil = %.2f\n",s);
+				break;
+			default:
+				puts("Kode yang anda masukan tidak dikenali!");
+				fakeloading();
+				clear();
+            continue;	
+	}
+	fakeloading();
+	clear();
+	}
+	menu();
+}
+
+void menu(){
+    int input;
+    menubool = true;
+    while (menubool){
+    clear();
+    puts("_________________________________________");
+    puts("|\t\tKALKULATOR\t\t|");
+    puts("|_______________________________________|");
+    puts("Selamat datang di Aplikasi Kalkulator");
+    puts("Silahkan Pilih Kalkulator yang akan anda gunakan :");
+    puts("1. Kalkulator Basic");
+    puts("2. Kalkulator Trigonometri");
+    puts("3. Kalkulator Luas bangun datar ");
+    puts("4. Kalkulator Perpangkatan/Akar");
+    printf("Silahkan masukan kode anda:");
+    scanf("%d",&input);
+    getchar();
+    clear();
+    switch (input){
+        case 1 :
+            kalkulatorbasic();
+            break;
+        case 2 :
+        	kalkulatortrigonometri();
+        	break;
+        case 3 :
+        	kalkulatorluasbangundatar();
+        	break;
+        case 4 :
+        	sqrt();
+        	break;
+        default :
+            puts("Kode yang anda masukan tidak dikenali!");
+            fakeloading();
+            keluar();
+            continue;
+    	}
+	}
+}
+
+
+//main program
+int main (){
+	animasi();
+	clear();
+    menu();
+    return 0;
+
+}
